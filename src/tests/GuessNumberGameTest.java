@@ -9,13 +9,31 @@ class GuessNumberGameTest {
     @BeforeEach
     void setUp()
     {
-        game = new GuessNumberGame();
+        game = new GuessNumberGame("Moe");
         game.incrementGuesses();
         game.decrementGuessAmountLeft();
     }
 
     @AfterEach
     void tearDown() {
+    }
+
+    @Test
+    void getPlayerName()
+    {
+        String expected = "Moe";
+        String actual = game.getPlayerName();
+        assertEquals(expected, actual);
+    }
+
+    // Tests both getter and setter for player test
+    @Test
+    void getPlayerGuess()
+    {
+        game.setPlayerGuess(10);
+        int expected = 10;
+        int actual = game.getPlayerGuess();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -53,9 +71,17 @@ class GuessNumberGameTest {
     }
 
     @Test
-    void generateRandomNumber()
+    void getRandomNumber()
     {
-        int num = game.generateRandomNumber();
-        assertTrue(1 <= num && num <= 20);
+        int randNum = game.getRandomNumber();
+        assertTrue(1 <= randNum && randNum <= 20);
     }
+
+//    @Test
+//    void generateRandomNumber()
+//    {
+//        int num = game.generateRandomNumber();
+//        assertTrue(1 <= num && num <= 20);
+//    }
+
 }
